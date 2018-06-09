@@ -1,0 +1,2 @@
+module DailyMoodsHelper
+end

@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row">
+		<div class="col-xs-12">
+		  <p><%= link_to "Today - New Entry", new_journal_path, class: "btn btn-success" %> </p>
+			<!-- tabs -->
+			<div class="tabbable tabs-left">
+				<ul class="nav nav-tabs">
+          <% @journals.each do |journal| %>
+  					<li class="active"><%= link_to "#{journal.subject}", journal_path(journal) %></li>
+          <% end %>
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane active">
+						<div class="">
+              <h2>Date created</h2>
+							<p>These lists are meant to identify articles which deserve editor attention because they are the most important for an encyclopedia to have, as determined by the community of participating editors. They may also be of interest to readers as an alternative to lists of overview articles.</p>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<!-- /tabs -->
+		</div>
+	</div>
+</div>

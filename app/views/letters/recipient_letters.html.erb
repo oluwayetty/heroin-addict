@@ -1,0 +1,7 @@
+<div>
+  <% @recipient_letters.each do |letter| %>
+    <div>
+      <p><%= letter.sender %>, <%= letter.subject %> </p>
+    </div>
+  <% end %>
+</div>

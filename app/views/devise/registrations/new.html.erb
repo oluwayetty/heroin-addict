@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="panel panel-default">
+        <div class="panel-heading text-center">
+            <span class="glyphicon glyphicon-lock"></span> Create a new account
+        </div>
+        <div class="panel-body">
+          <%= form_for(:user, :url => registration_path(:user)) do |f| %>
+            <div class="form-group">
+              <%= f.text_field :username, autofocus: true, class: "form-control", id: "sign-up-form", placeholder: "Username" %>
+            </div>
+            <div class="form-group">
+              <%= f.email_field :email, autofocus: true, class: "form-control", id: "sign-up-form", placeholder: "Email Address" %>
+            </div>
+            <div class="form-group radio-group">
+              <p><b>Are you signing up to support a family member or loved one?</b></p>
+              <div  class="form-group">
+                <%= f.radio_button :supporter, false, :checked => true, :value => false %>
+                <%= f.label :supporter, "No", value: false %>
+                &emsp;
+                <%= f.radio_button :supporter, true, :value => true %>
+                <%= f.label :supporter, "Yes", value: true %>
+              </div>
+              <div>
+
+              </div>
+            </div>
+            <div class="form-group text-center">
+              <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <% end %><br />
+              <%= f.password_field :password, autocomplete: "off", class: "form-control", id: "sign-up-form", placeholder: "Password" %>
+            </div>
+            <div class="form-group">
+              <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", id: "sign-up-form", placeholder: "Confirm Password" %>
+            </div>
+            <div class="form-group">
+              <%= f.submit "Sign up", class: "btn btn-success btn-block" %>
+            </div>
+            <p class="text-center">Have an account?
+              <%= link_to "Log in", root_path %>
+            </p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
