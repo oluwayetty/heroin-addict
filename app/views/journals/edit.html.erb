@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <%= form_for(@journal) do |f| %>
+      <div class="">
+        <%= f.text_field :created_at, class: "", value: formatted_date, readonly: true %>
+        <%= f.text_field :created_at, class: "", value: formatted_time, readonly: true %>
+      </div><br/>
+        <div class="form-group">
+          <%= f.label "Title" %>
+          <%= f.text_field :subject, autofocus: true, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label "Description" %>
+          <%= f.text_area :body, autofocus: true, class: "form-control", rows: 7 %>
+        </div>
+        <%= f.submit "Update", class: "form-control btn-success" %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,14 +1,26 @@
 class JournalsController < ApplicationController
+  include JournalHelper
+  before_action :set_journal, only: [:show, :edit, :update]
+  respond_to :html, :json
 
   def index
     @journals = current_user.journals
   end
 
   def show
-    @journal = Journal.find(params[:id])
+    respond_to do |format|
+      format.js {render layout: false} # Add this line to you respond_to block
+    end
   end
 
   def new
+  end
+
+  def edit
+    unless same_date?(@journal)
+      redirect_to journals_path
+      flash[:alert] = "Oops, but you can't edit a journal after 24 hours it was created"
+    end
   end
 
   def create
@@ -22,8 +34,22 @@ class JournalsController < ApplicationController
     end
   end
 
+  def update
+    if @journal.update(journal_params)
+      redirect_to journals_path
+      flash[:notice] = "Your journal for today was successfully updated"
+    else
+      flash[:alert] = "There was an error updating your new journal record"
+      redirect_to new_journal_path
+    end
+  end
+
   private
   def journal_params
     params.require(:journal).permit(:subject, :body)
+  end
+
+  def set_journal
+    @journal = Journal.find(params[:id])
   end
 end

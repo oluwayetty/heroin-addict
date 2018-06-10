@@ -9,6 +9,6 @@ Rails.application.routes.draw do
   end
 
   resources :daily_moods, only: :create
-  resources :journals, only: [:new, :create, :index, :show]
+  resources :journals, only: [:new, :create, :index, :show, :edit, :update]
   resources :letters, only: [:index, :create,:show, :new]
 end

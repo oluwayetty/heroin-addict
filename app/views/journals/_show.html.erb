@@ -1,0 +1,6 @@
+<div id="current_journal" style="backgrounf-color:red;">
+  <p><%= @journal.subject %></p>
+  <p><%= @journal.body %></p>
+
+  <%= link_to 'Edit', edit_journal_path(@journal) if same_date?(@journal) %>
+</div>
