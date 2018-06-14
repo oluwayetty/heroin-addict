@@ -86,12 +86,20 @@
 
 .alert-notice {
   @extend .alert-success;
+  width: 50%;
+  margin: 0 auto;
 }
 
 .alert-alert {
   @extend .alert-danger;
+  width: 50%;
+  margin: 0 auto;
 }
 
 .radio-group {
   margin: 0 12%;
+}
+
+.alert > p {
+  text-align: center;
 }
