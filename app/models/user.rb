@@ -9,4 +9,9 @@ class User < ApplicationRecord
   has_many :letters
   validates :email, presence: true, uniqueness: true
   validates :username, presence: true, uniqueness: true
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
+
+  has_many :chatroom_users
+  has_many :chatrooms, through: :chatroom_users
+  has_many :messages
 end

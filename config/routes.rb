@@ -3,12 +3,19 @@ Rails.application.routes.draw do
 
   root 'home#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  devise_scope :user do
-    get 'sign_in', to: 'devise/sessions#new'
-    delete 'sign_out', to: 'devise/sessions#destroy'
-  end
+  # devise_scope :user do
+  #   get 'sign_in', to: 'devise/sessions#new'
+  #   delete 'sign_out', to: 'devise/sessions#destroy'
+  # end
 
   resources :daily_moods, only: :create
   resources :journals, only: [:new, :create, :index, :show, :edit, :update]
   resources :letters, only: [:index, :create,:show, :new]
+
+  resources :chatrooms do
+    resource :chatroom_users
+    resources :messages
+  end
+
+  resources :direct_messages
 end
