@@ -6,11 +6,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-<<<<<<< HEAD
   # config.secret_key = '52c19aff642c2cd042fc7c770608024bf527bb3efdb60ecc95a20b968c40633cb2d786ef63b00037abb972f07fcbc146f2c72d7d755d18612cec517ed61de0a4'
-=======
-  # config.secret_key = 'c1b7d4557968997b1fec1abe80b61fff9c803fc65bdce1476ebf408eeb1fa93721e1ff96c5d0986a7e31741fd4da64f8095df3a034c392131b799685bd98f04e'
->>>>>>> chatrooms/master
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -94,15 +90,12 @@ Devise.setup do |config|
   # from the server. You can disable this option at your own risk.
   # config.clean_up_csrf_token_on_authentication = true
 
-<<<<<<< HEAD
   # When false, Devise will not attempt to reload routes on eager load.
   # This can reduce the time taken to boot the app but if your application
   # requires the Devise mappings to be loaded during boot time the application
   # won't boot properly.
   # config.reload_routes = true
 
-=======
->>>>>>> chatrooms/master
   # ==> Configuration for :database_authenticatable
   # For bcrypt, this is the cost for hashing the password and defaults to 11. If
   # using other algorithms, it sets how many times you want the password to be hashed.
@@ -115,11 +108,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 11
 
   # Set up a pepper to generate the hashed password.
-<<<<<<< HEAD
   # config.pepper = '47047a81d28422e0a8f6af01ab67601322db1f2694447657c452bfd825ef2d9a382bc9e5c0ec49941184a7d5df587c48f83a7fd226343889e0ce707adf3fd039'
-=======
-  # config.pepper = 'be29bbe59df82d82a54647538da1c55fd71ec1eef717594dbbf4032b3c011d2aad09f88e0c680fea7163991fb5197554f057785d190b83817ec5e2a6d03d5e95'
->>>>>>> chatrooms/master
 
   # Send a notification email when the user's password is changed
   # config.send_password_change_notification = false
