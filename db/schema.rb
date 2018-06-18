@@ -15,6 +15,23 @@ ActiveRecord::Schema.define(version: 20180609125423) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "chatroom_users", force: :cascade do |t|
+    t.integer  "chatroom_id"
+    t.integer  "user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.datetime "last_read_at"
+    t.index ["chatroom_id"], name: "index_chatroom_users_on_chatroom_id", using: :btree
+    t.index ["user_id"], name: "index_chatroom_users_on_user_id", using: :btree
+  end
+
+  create_table "chatrooms", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.boolean  "direct_message", default: false
+  end
+
   create_table "daily_moods", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "mood"
@@ -43,6 +60,16 @@ ActiveRecord::Schema.define(version: 20180609125423) do
     t.index ["user_id"], name: "index_letters_on_user_id", using: :btree
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.integer  "chatroom_id"
+    t.integer  "user_id"
+    t.text     "body"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id", using: :btree
+    t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
@@ -63,6 +90,10 @@ ActiveRecord::Schema.define(version: 20180609125423) do
     t.index ["username"], name: "index_users_on_username", unique: true, using: :btree
   end
 
+  add_foreign_key "chatroom_users", "chatrooms"
+  add_foreign_key "chatroom_users", "users"
   add_foreign_key "journals", "users"
   add_foreign_key "letters", "users"
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "users"
 end
