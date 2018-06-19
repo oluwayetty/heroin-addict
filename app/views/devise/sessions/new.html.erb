@@ -1,62 +1,35 @@
 <div class="container">
-    <div class="row">
-        <div class="col-md-4 col-md-offset-4">
-            <div class="panel panel-default">
-                <div class="panel-heading text-center">
-                    <span class="glyphicon glyphicon-lock"></span> Login
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+        <div class="panel panel-default">
+          <div class="panel-heading text-center">
+              <span class="glyphicon glyphicon-lock"></span> Login
+          </div>
+          <div class="panel-body">
+            <%= form_for(:user, :url => session_path(:user), html: {class: "form-horizontal"}) do |f| %>
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">Email</label><br/>
+                <div class="col-sm-12">
+                  <%= f.email_field :email, autofocus: true, class: "form-control", id:"inputEmail3" %>
                 </div>
-                <div class="panel-body">
-                  <%= form_for(:user, :url => session_path(:user), html: {class: "form-horizontal"}) do |f| %>
-                    <div class="form-group">
-                      <label for="inputEmail3" class="col-sm-2 control-label">Email</label><br/>
-                      <div class="col-sm-12">
-                        <%= f.email_field :email, autofocus: true, class: "form-control", id:"inputEmail3" %>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="inputEmail3" class="col-sm-2 control-label">Password</label><br/>
-                      <div class="col-sm-12">
-                          <%= f.password_field :password, autofocus: true, class: "form-control", id:"inputPassword3", autocomplete: "off" %>
-                      </div>
-                    </div>
-                    <div class="form-group last actions">
-                        <div class="col-sm-4 col-sm-offset-4">
-                          <%= f.submit "Sign in", class: "btn btn-success btn-large" %>
-                        </div>
-                    </div>
-                  <% end %>
+              </div>
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">Password</label><br/>
+                <div class="col-sm-12">
+                    <%= f.password_field :password, autofocus: true, class: "form-control", id:"inputPassword3", autocomplete: "off" %>
                 </div>
-                <div class="panel-footer">
-                  Not Registred? <%= link_to "Register here", new_user_registration_path %>
-                </div>
-            </div>
-        </div>
-<div class="row">
-  <div class="col-sm-4 col-sm-offset-4">
-    <h1 class="text-center">Log in</h1>
-    <hr>
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="form-group">
-        <%= f.email_field :email, autofocus: true, placeholder: 'Email Address', class: 'form-control' %>
-      </div>
-
-      <div class="form-group">
-        <%= f.password_field :password, autocomplete: "off", placeholder: 'Password', class: 'form-control' %>
-      </div>
-
-      <% if devise_mapping.rememberable? -%>
-        <div class="form-group">
-          <%= f.check_box :remember_me %>
-          <%= f.label :remember_me %>
-        </div>
-      <% end -%>
-
-      <div class="form-group">
-          <%= f.submit "Log in", class: "btn btn-primary btn-block btn-lg" %>
-      </div>
-    <% end %>
-      <div class="text-center">
-        <%= render "devise/shared/links" %>
+              </div>
+              <div class="form-group last actions">
+                  <div class="col-sm-4 col-sm-offset-4">
+                    <%= f.submit "Sign in", class: "btn btn-success btn-large" %>
+                  </div>
+              </div>
+            <% end %>
+          </div>
+          <div class="panel-footer">
+            Not Registred? <%= link_to "Register here", new_user_registration_path %>
+          </div>
       </div>
     </div>
+  </div>
 </div>

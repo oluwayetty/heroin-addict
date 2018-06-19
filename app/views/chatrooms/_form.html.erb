@@ -1,22 +1,26 @@
-<%= form_for(chatroom) do |f| %>
-  <% if chatroom.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(chatroom.errors.count, "error") %> prohibited this chatroom from being saved:</h2>
+<div class="containter">
+  <div class="col-sm-4 col-sm-offset-4 text-center" id="channelform">
+    <%= form_for(chatroom) do |f| %>
+      <% if chatroom.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(chatroom.errors.count, "error") %> prohibited this chatroom from being saved:</h2>
 
-      <ul>
-      <% chatroom.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+          <ul>
+          <% chatroom.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
+      <div class="field">
+        <%= f.label :name %><br/>
+        <%= f.text_field :name, class:"form-group" %>
+      </div>
 
-  <div class="actions">
-    <%= f.submit %>
+      <div class="actions">
+        <%= f.submit "Create", class: "btn btn-success" %>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>
