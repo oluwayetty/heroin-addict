@@ -1,5 +1,6 @@
 class ChatroomsController < ApplicationController
   before_action :set_chatroom, only: [:show, :edit, :update, :destroy]
+  before_action :verify_creator, only: [:show, :edit, :update, :destroy]
 
   # GET /chatrooms
   # GET /chatrooms.json
@@ -26,10 +27,11 @@ class ChatroomsController < ApplicationController
   # POST /chatrooms
   # POST /chatrooms.json
   def create
+
     @chatroom = Chatroom.new(chatroom_params)
+    @chatroom.creator_id = current_user.id
 
     respond_to do |format|
-
       if @chatroom.save
         @chatroom.chatroom_users.where(user_id: current_user.id).first_or_create
         format.html { redirect_to @chatroom, notice: 'Chatroom was successfully created.' }
@@ -73,6 +75,14 @@ class ChatroomsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def chatroom_params
-      params.require(:chatroom).permit(:name)
+      params.require(:chatroom).permit(:name, :creator_id)
+    end
+
+    def verify_creator
+      @chatroom = Chatroom.find(params[:id])
+      unless @chatroom.creator_id == current_user.id
+        redirect_to chatrooms_path
+        flash[:error] = "Oops, you're not authorized to make this action"
+      end
     end
 end
