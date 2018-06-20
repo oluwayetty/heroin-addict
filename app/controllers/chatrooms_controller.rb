@@ -27,12 +27,12 @@ class ChatroomsController < ApplicationController
   # POST /chatrooms
   # POST /chatrooms.json
   def create
-
     @chatroom = Chatroom.new(chatroom_params)
     @chatroom.creator_id = current_user.id
 
     respond_to do |format|
       if @chatroom.save
+        binding.pry
         @chatroom.chatroom_users.where(user_id: current_user.id).first_or_create
         format.html { redirect_to @chatroom, notice: 'Chatroom was successfully created.' }
         format.json { render :show, status: :created, location: @chatroom }
@@ -75,7 +75,7 @@ class ChatroomsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def chatroom_params
-      params.require(:chatroom).permit(:name, :creator_id)
+      params.require(:chatroom).permit(:name, :creator_id, :user_list)
     end
 
     def verify_creator

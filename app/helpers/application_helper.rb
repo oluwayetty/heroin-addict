@@ -16,4 +16,8 @@ module ApplicationHelper
     user.supporter? ? true : false
   end
 
+  def all_users_except_current_user
+    User.all - [current_user]
+  end
+
 end

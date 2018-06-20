@@ -3,7 +3,7 @@
 <div class='container'>
   <div id='content'>
     <div class='span2 sidebar'>
-      <%= link_to "+ New Chatroom", new_chatroom_path, class: "btn btn-success" %><br/><br/>
+      <%= link_to "+ New Chatroom", new_chatroom_path, class: "btn btn-success new-chatroom" %><br/><br/>
 
       <h5><%= current_user.chatrooms.public_channels.empty? ? '' : 'My chatrooms' %></h5>
       <ul class="nav nav-tabs nav-stacked">
@@ -14,7 +14,7 @@
 
       <h5>Users</h5>
       <ul class="nav nav-tabs nav-stacked">
-        <% (User.all - [current_user]).each do |user| %>
+        <% all_users_except_current_user.each do |user| %>
           <li><%= link_to user.username, direct_message_path(user.id), data: {behavior: "chatroom-link", chatroom_id: Chatroom.direct_message_for_users([current_user, user]).id } %></li>
         <% end %>
       </ul>

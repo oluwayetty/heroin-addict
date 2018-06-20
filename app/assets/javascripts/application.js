@@ -14,4 +14,15 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require bootstrap-multiselect
 //= require_tree .
+
+$(document).ready(function() {
+  $('#user_list').multiselect();
+  
+  $('a.new-chatroom').on('click', function(e) {
+      console.log('yayyy');
+      window.location = $(e.target).attr('href');
+      window.location.reload(true);
+  });
+});
