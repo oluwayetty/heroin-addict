@@ -17,7 +17,7 @@ module ApplicationHelper
   end
 
   def all_users_except_current_user
-    User.all - [current_user]
+    (User.all - [current_user]).sort_by(&:username)
   end
 
 end

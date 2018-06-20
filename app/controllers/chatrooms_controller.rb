@@ -1,6 +1,6 @@
 class ChatroomsController < ApplicationController
   before_action :set_chatroom, only: [:show, :edit, :update, :destroy]
-  before_action :verify_creator, only: [:show, :edit, :update, :destroy]
+  before_action :verify_creator, only: [:edit, :update, :destroy]
 
   # GET /chatrooms
   # GET /chatrooms.json

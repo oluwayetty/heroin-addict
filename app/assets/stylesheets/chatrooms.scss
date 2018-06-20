@@ -91,3 +91,10 @@ span.multiselect-native-select select {
 	margin-left: -20px;
 	margin-right: 0
 }
+
+ul.multiselect-container.dropdown-menu {
+  // .add-users-form {
+    overflow: auto;
+    height: 250px;
+  // }
+}
