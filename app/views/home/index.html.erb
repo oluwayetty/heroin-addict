@@ -1,18 +1,22 @@
 <% if user_signed_in? %>
   <div class="login-wrap">
   	<div class="login-html">
-      <div class="form-group col-md-12 text-center">
-        <p>Hello <%= current_user.username.capitalize %>,</p>
-        <h4>How was your day?</h4>
-        <%= form_for(DailyMood.new) do |f| %>
-          <% DailyMood::MOOD.each do |item| %>
-            <div>
-              <%= f.radio_button :mood, item %> <%= item %><br /><br />
-            </div>
+      <% if current_user.has_a_mood_record_for_today? %>
+        <h4 class="text-center">Your submitted mood for today is <br/>"<%= current_user_last_mood %>"</h4>
+      <% else %>
+        <div class="form-group col-md-12 text-center">
+            <p>Hello <%= current_user.username.capitalize %>,</p>
+            <h4>How was your day?</h4>
+            <%= form_for(DailyMood.new) do |f| %>
+              <% DailyMood::MOOD.each do |item| %>
+                <div>
+                  <%= f.radio_button :mood, item %> <%= item %><br /><br />
+                </div>
+              <% end %>
+              <%= f.submit "Submit", class: "btn btn-success" %>
+            <% end %>
           <% end %>
-          <%= f.submit "Submit", class: "btn btn-success" %>
-        <% end %>
-      </div>
+        </div>
     </div>
   </div>
 <% else %>

@@ -2,10 +2,18 @@
   <div class="row">
     <div class="col-md-4 col-md-offset-4">
       <%= form_for(Journal.new) do |f| %>
-      <div class="">
-        <%= f.text_field :created_at, class: "", value: formatted_date, readonly: true %>
-        <%= f.text_field :created_at, class: "", value: formatted_time, readonly: true %>
-      </div><br/>
+        <div>
+					<div>
+	          <span class="input-group-addon">
+              <p><strong>Date</strong><br>
+              <%= f.text_field :created_at, class: "readonly form-control text-center", id: "date", value: formatted_date, readonly: true %></p>
+            </span>
+            <span class="input-group-addon">
+              <p><strong>Time</strong>
+              <%= f.text_field :created_at, class: "readonly form-control text-center", id: "time", value: formatted_time, readonly: true %></p>
+            </span>
+					</div>
+				</div><br/>
         <div class="form-group">
           <%= f.label "Title" %>
           <%= f.text_field :subject, autofocus: true, class: "form-control" %>

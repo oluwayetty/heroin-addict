@@ -27,12 +27,12 @@ class ChatroomsController < ApplicationController
   # POST /chatrooms
   # POST /chatrooms.json
   def create
-    @chatroom = Chatroom.new(chatroom_params)
-    @chatroom.creator_id = current_user.id
-
+    users_id = params["user_list"].map(&:to_i)
+    @chatroom =  Chatroom.new(chatroom_params.merge(
+      creator_id: current_user.id,
+      chatroom_users: User.where(id: users_id).map { |u| ChatroomUser.new(user: u) }))
     respond_to do |format|
       if @chatroom.save
-        binding.pry
         @chatroom.chatroom_users.where(user_id: current_user.id).first_or_create
         format.html { redirect_to @chatroom, notice: 'Chatroom was successfully created.' }
         format.json { render :show, status: :created, location: @chatroom }

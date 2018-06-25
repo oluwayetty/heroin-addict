@@ -20,4 +20,8 @@ module ApplicationHelper
     (User.all - [current_user]).sort_by(&:username)
   end
 
+  def current_user_last_mood
+    current_user.daily_moods.last.mood.upcase
+  end
+
 end
