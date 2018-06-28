@@ -24,3 +24,12 @@
   box-shadow: 3px 3px 0px transparent;
   transition: 0.5s;
 }
+
+.nav-stacked {
+    border-bottom: 0;
+    height: 350px;
+    width: auto;
+    background: #F5F5F5;
+    overflow-y: scroll;
+    margin-bottom: 25px;
+}
