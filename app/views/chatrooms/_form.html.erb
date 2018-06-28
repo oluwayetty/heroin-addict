@@ -20,7 +20,7 @@
 
       <div>
         <%= f.label :Users_selection %><br/>
-        <%= select_tag("user_list", options_from_collection_for_select(all_users_except_current_user, "id", "username"), class: 'form-control col-md-7 col-xs-12 add-users-form', multiple: true) %>
+        <%= f.collection_select(:user_ids, User.all, :id, :username, {}, {multiple: true, class: 'form-control col-md-7 col-xs-12', id: 'e1'}) %>
       </div>
       <br/>
 
@@ -33,6 +33,7 @@
 
 <script type="text/javascript">
   $(document).ready(function() {
-    $('#user_list').multiselect();
+    $("#e1").select2({
+    });
   });
 </script>

@@ -50,3 +50,46 @@
   border-color: #ddd transparent #ddd #ddd;
   *border-right-color: #ffffff;
 }
+
+.simple-calendar {
+  width: 70%;
+  margin: 0 auto;
+}
+
+section {
+	padding: 60px 0;
+}
+
+section .section-title{
+	text-align:center;
+	color:#007b5e;
+	margin-bottom:50px;
+}
+
+#what-we-do{
+	background:#ffffff;
+}
+#what-we-do .card{
+	padding: 1rem!important;
+	border: none;
+	margin-bottom:1rem;
+	-webkit-transition: .5s all ease;
+	-moz-transition: .5s all ease;
+	transition: .5s all ease;
+}
+#what-we-do .card:hover{
+	-webkit-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+	-moz-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+	box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+}
+
+#what-we-do .card .card-block{
+	padding-left: 50px;
+  position: relative;
+}
+
+#what-we-do .card .card-block a{
+	color: #007b5e !important;
+	font-weight:700;
+	text-decoration:none;
+}

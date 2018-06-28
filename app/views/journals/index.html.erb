@@ -1,28 +1,21 @@
 <div class="container">
   <div class="row">
   	<div class="col-xs-12">
-  	  <p><%= link_to "Today - New Entry", new_journal_path, class: "btn btn-success" %> </p>
+  	  <p> </p>
       <br/>
-  		<div class="tabbable tabs-left">
-  			<ul class="nav nav-tabs">
-          <% @journals.each do |journal| %>
-  					<li>
-              <%= link_to "#{journal.subject}", journal_path(journal), remote: true %>
-            </li>
+      <%= month_calendar events: @journals do |date,journals| %>
+        <%= content_tag :div, class: "calendar-day", data: {date: date} do %>
+        <%= date.strftime('%e') %>
+          <% journals.each do |journal| %>
+            <div class="single_event">
+              <%= link_to "View Journal", journal_path(journal) %>
+            </div>
           <% end %>
-  			</ul>
-        <div id="current_journal" style="backgrounf-color:red;">
-          <div class="tab-content">
-  					<div class="tab-pane active">
-  						<div>
-                <h2>Date created</h2>
-  						</div>
-  					</div>
-
-  				</div>
-        </div>
-  		</div>
-  		<!-- /tabs -->
+          <% if date == DateTime.now.to_date %>
+            <%= link_to "New Entry", new_journal_path, class: "btn btn-success new-entry" %>
+          <% end %>
+        <% end %>
+      <% end %>
   	</div>
   </div>
 </div>

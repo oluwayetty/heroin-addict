@@ -10,8 +10,6 @@ gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
 gem 'bootstrap-sass'
-# gem 'bootstrap-multiselect-rails'
-gem 'bootstrap-multiselect_rails'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
@@ -23,7 +21,8 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
-
+gem "select2-rails"
+gem "simple_calendar", "~> 2.0"
 gem 'devise'
 
 # See https://github.com/rails/execjs#readme for more supported runtimes

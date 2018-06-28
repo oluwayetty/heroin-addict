@@ -4,13 +4,16 @@ class JournalsController < ApplicationController
   respond_to :html, :json
 
   def index
-    @journals = current_user.journals
+    @journals = current_user.journals.each_with_object({}) do |journal, hsh|
+      #select only the last journal created by a date
+      hsh[journal.created_at.to_date] = journal
+    end.values
   end
 
   def show
-    respond_to do |format|
-      format.js {render layout: false} # Add this line to you respond_to block
-    end
+    @journal = Journal.find_by(subject: params[:subject])
+    date_created = @journal.created_at.to_date
+    @all_journals = current_user.journals.where("date(created_at) = ?", date_created)
   end
 
   def new
@@ -50,6 +53,7 @@ class JournalsController < ApplicationController
   end
 
   def set_journal
-    @journal = Journal.find(params[:id])
+    @journal = Journal.find_by(subject: params[:subject])
+    # @journal = Journal.find(params[:id])
   end
 end

@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'registrations' }
 
   root 'home#index'
 
   resources :daily_moods, only: :create
-  resources :journals, only: [:new, :create, :index, :show, :edit, :update]
+  resources :journals, only: [:new, :create, :index, :show, :edit, :update], param: :subject
   resources :letters, only: [:index, :create,:show, :new]
 
   resources :chatrooms do

@@ -27,7 +27,7 @@ class ChatroomsController < ApplicationController
   # POST /chatrooms
   # POST /chatrooms.json
   def create
-    users_id = params["user_list"].map(&:to_i)
+    users_id = params["chatroom"]["user_ids"].map(&:to_i)
     @chatroom =  Chatroom.new(chatroom_params.merge(
       creator_id: current_user.id,
       chatroom_users: User.where(id: users_id).map { |u| ChatroomUser.new(user: u) }))
@@ -75,7 +75,7 @@ class ChatroomsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def chatroom_params
-      params.require(:chatroom).permit(:name, :creator_id, :user_list)
+      params.require(:chatroom).permit(:name, :creator_id, user_ids: [])
     end
 
     def verify_creator
