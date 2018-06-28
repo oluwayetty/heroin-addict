@@ -20,7 +20,7 @@
 
       <div>
         <%= f.label :Users_selection %><br/>
-        <%= f.collection_select(:user_ids, User.all, :id, :username, {}, {multiple: true, class: 'form-control col-md-7 col-xs-12', id: 'e1'}) %>
+        <%= f.collection_select(:user_ids, all_users_except_current_user, :id, :username, {}, {multiple: true, class: 'form-control col-md-7 col-xs-12', id: 'e1'}) %>
       </div>
       <br/>
 

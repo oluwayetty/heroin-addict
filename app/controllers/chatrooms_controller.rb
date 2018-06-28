@@ -48,6 +48,7 @@ class ChatroomsController < ApplicationController
   def update
     respond_to do |format|
       if @chatroom.update(chatroom_params)
+        @chatroom.chatroom_users.where(user_id: current_user.id).first_or_create
         format.html { redirect_to @chatroom, notice: 'Chatroom was successfully updated.' }
         format.json { render :show, status: :ok, location: @chatroom }
       else
