@@ -10,9 +10,8 @@ class JournalsController < ApplicationController
   end
 
   def edit
-
     unless same_date?(@journal)
-      redirect_to journals_path
+      redirect_to calendar_path
       flash[:alert] = "Oops, but you can't edit a journal after 24 hours it was created"
     end
   end
@@ -24,7 +23,7 @@ class JournalsController < ApplicationController
   def create
     @journal = current_user.journals.build(journal_params)
     if @journal.save
-      redirect_to journals_path
+      redirect_to calendar_path
       flash[:notice] = "Your journal for today was successfully created"
     else
       flash[:alert] = "There was an error creating your new journal record"
@@ -34,7 +33,7 @@ class JournalsController < ApplicationController
 
   def update
     if @journal.update(journal_params)
-      redirect_to journals_path
+      redirect_to calendar_path
       flash[:notice] = "Your journal for today was successfully updated"
     else
       flash[:alert] = "There was an error updating your new journal record"
@@ -43,6 +42,11 @@ class JournalsController < ApplicationController
   end
 
   def visible_journals
+    binding.pry
+    unless current_user.supporter?
+      redirect_to root_path
+      flash[:alert] = "Unauthorized to view the page"
+    end
     @visible_journals = current_user.visible_journals
   end
 
