@@ -1,34 +1,29 @@
 class JournalsController < ApplicationController
   include JournalHelper
-  before_action :set_journal, only: [:show, :edit, :update]
+  before_action :set_journal, only: %i[edit update]
+  before_action :set_supporters, except: :index
   respond_to :html, :json
 
   def index
-    @journals = current_user.journals.each_with_object({}) do |journal, hsh|
-      #select only the last journal created by a date
-      hsh[journal.created_at.to_date] = journal
-    end.values
-  end
-
-  def show
-    @journal = Journal.find_by(subject: params[:subject])
-    date_created = @journal.created_at.to_date
-    @all_journals = current_user.journals.where("date(created_at) = ?", date_created)
-  end
-
-  def new
+    date_created = params[:day]
+    @journals = current_user.journals.where("date(created_at) = ?", date_created)
   end
 
   def edit
+
     unless same_date?(@journal)
       redirect_to journals_path
       flash[:alert] = "Oops, but you can't edit a journal after 24 hours it was created"
     end
   end
 
+  def new
+    @journal = current_user.journals.build
+  end
+
   def create
-    @new_journal = current_user.journals.build(journal_params)
-    if @new_journal.save
+    @journal = current_user.journals.build(journal_params)
+    if @journal.save
       redirect_to journals_path
       flash[:notice] = "Your journal for today was successfully created"
     else
@@ -47,13 +42,22 @@ class JournalsController < ApplicationController
     end
   end
 
+  def visible_journals
+    @visible_journals = current_user.visible_journals
+  end
+
   private
   def journal_params
-    params.require(:journal).permit(:subject, :body)
+    viewer_ids = (params[:viewers] || {}).keys
+    viewers = @supporters.where(id: viewer_ids)
+    params.require(:journal).permit(:subject, :body).merge(viewers: viewers)
   end
 
   def set_journal
-    @journal = Journal.find_by(subject: params[:subject])
-    # @journal = Journal.find(params[:id])
+    @journal = current_user.journals.find(params[:id])
+  end
+
+  def set_supporters
+    @supporters = current_user.supporters.order(:username)
   end
 end

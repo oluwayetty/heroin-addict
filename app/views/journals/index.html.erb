@@ -1,21 +1,20 @@
-<div class="container">
-  <div class="row">
-  	<div class="col-xs-12">
-  	  <p> </p>
-      <br/>
-      <%= month_calendar events: @journals do |date,journals| %>
-        <%= content_tag :div, class: "calendar-day", data: {date: date} do %>
-        <%= date.strftime('%e') %>
-          <% journals.each do |journal| %>
-            <div class="single_event">
-              <%= link_to "View Journal", journal_path(journal) %>
-            </div>
-          <% end %>
-          <% if date == DateTime.now.to_date %>
-            <%= link_to "New Entry", new_journal_path, class: "btn btn-success new-entry" %>
-          <% end %>
-        <% end %>
-      <% end %>
-  	</div>
-  </div>
-</div>
+<section id="what-we-do">
+	<div class="row">
+    <% @journals.each do |journal| %>
+		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+			<div class="card">
+				<div class="card-block block-1">
+					<h3 class="card-title"><%= journal.subject.capitalize %></h3>
+					<p class="card-text">
+            SeeDocOnline makes seeing a doctor simple. Our interactive healthcare services allow
+            patients to speak to a doctor whenever and wherever they want. We have a team verified
+            doctors from around the globe, making it possible speaking in your native language.
+            <%= journal.body %>
+          </p>
+          <%= link_to 'Edit', edit_journal_path(journal) if same_date?(journal) %>
+				</div>
+			</div>
+		</div>
+    <% end %>
+	</div>
+</section>

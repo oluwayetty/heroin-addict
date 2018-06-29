@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :daily_moods, only: :create
-  resources :journals, only: [:new, :create, :index, :show, :edit, :update], param: :subject
+  resources :journals, only: [:new, :create, :index, :show, :edit, :update]
+  get '/visible_journals', to: 'journals#visible_journals'
+  resource :calendar
   resources :letters, only: [:index, :create,:show, :new]
 
   resources :chatrooms do

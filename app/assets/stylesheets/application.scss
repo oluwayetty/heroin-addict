@@ -121,13 +121,19 @@
   overflow: hidden;
   border-radius: 17px;
   background-color: #4ADFCC;
-  margin: 0 auto;
+  margin: 2% auto;
   color:white;
-  width: 30%;
   box-shadow: 2px 2px 2px 2px #E0E0E0;
-  height: 90px;
+  height: 50%;
+  width: 50%;
+  float: right;
 }
 
 small.quote-text {
   color: white;
+}
+
+.shared-journals {
+  float: right;
+  margin-right: 180px;
 }

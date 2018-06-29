@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <%= form_for(@journal) do |f| %>
+        <div>
+					<div>
+	          <span class="input-group-addon">
+              <p><strong>Date</strong><br>
+              <%= f.text_field :created_at, class: "readonly form-control text-center", id: "date", value: formatted_date, readonly: true %></p>
+            </span>
+            <span class="input-group-addon">
+              <p><strong>Time</strong>
+              <%= f.text_field :created_at, class: "readonly form-control text-center", id: "time", value: formatted_time, readonly: true %></p>
+            </span>
+					</div>
+				</div><br/>
+        <div class="form-group">
+          <%= f.label "Title" %>
+          <%= f.text_field :subject, autofocus: true, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label "Description" %>
+          <%= f.text_area :body, autofocus: true, class: "form-control", rows: 7 %>
+        </div><br/>
+
+        <div>
+           <label>Share With</label>
+          <% @supporters.each do |supporter| %>
+          <div>
+            <%= check_box_tag "viewers[#{supporter.id}]", '1', @journal.viewers.include?(supporter) %>
+            <%= label_tag "viewers[#{supporter.id}]", supporter.username %>
+          </div>
+          <% end %>
+        </div>
+        <%= f.submit "Submit", class: "form-control btn-success" %>
+      <% end %>
+    </div>
+  </div>
+</div>

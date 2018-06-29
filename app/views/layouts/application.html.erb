@@ -23,15 +23,6 @@
       <% end %>
     </div>
     <p></p>
-    <% if current_user %>
-      <blockquote class="quote-box">
-        <small class="quote-text">
-          "<%= current_user.goal %>"
-        </small>
-        <hr>
-      </blockquote>
-    <% end %>
-    <p></p>
 
     <%= yield %>
   </body>

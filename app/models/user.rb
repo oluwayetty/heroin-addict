@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :daily_moods
   has_many :journals
   has_many :letters
+  has_and_belongs_to_many :visible_journals, class_name: 'Journal', join_table: 'journal_viewers'
   has_and_belongs_to_many :addicts,
     class_name: 'User', join_table: 'supported_users',
     foreign_key: 'supporter_id', association_foreign_key: 'addict_id'
