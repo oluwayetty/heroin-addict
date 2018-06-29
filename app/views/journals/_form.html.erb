@@ -24,7 +24,9 @@
         </div><br/>
 
         <div>
-           <label>Share With</label>
+          <% unless current_user.supporter? %>
+            <label>Share With </label>
+          <% end %>
           <% @supporters.each do |supporter| %>
           <div>
             <%= check_box_tag "viewers[#{supporter.id}]", '1', @journal.viewers.include?(supporter) %>
