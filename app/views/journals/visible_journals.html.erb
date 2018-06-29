@@ -15,7 +15,7 @@
                 <tr>
                   <td class="hidden-xs"></td>
                   <td><%= journal.subject %> </td>
-                  <td><%= journal.user.username %>  <%= link_to 'Read', journals_path(journal) %></td>
+                  <td><%= journal.user.username %>  <%= link_to 'Read', journal_path(journal) %></td>
                 </tr>
               <% end %>
             </tbody>

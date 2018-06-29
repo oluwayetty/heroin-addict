@@ -1,0 +1,21 @@
+<div class="container">
+	<div class="row">
+    <div class="wrapper">
+      <div class="logo_header">
+          <h3 class="text-center"><strong> <%= @journal.subject.capitalize %></strong> </h3>
+      </div><br/>
+      <div class="email_body">
+        <p>
+            SeeDocOnline makes seeing a doctor simple. Our interactive healthcare services allow
+            patients to speak to a doctor whenever and wherever they want. We have a team verified
+            doctors from around the globe, making it possible speaking in your native language.
+            <%= @journal.body %>
+        </p>
+        <hr>
+        <div class="text-center">
+          <small>From <%= @journal.user.username %></small>
+        </div>
+      </div>
+    </div>
+	</div>
+</div>

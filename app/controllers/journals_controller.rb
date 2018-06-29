@@ -9,15 +9,19 @@ class JournalsController < ApplicationController
     @journals = current_user.journals.where("date(created_at) = ?", date_created)
   end
 
+  def show
+    @journal = Journal.find(params[:id])
+  end
+
+  def new
+    @journal = current_user.journals.build
+  end
+
   def edit
     unless same_date?(@journal)
       redirect_to calendar_path
       flash[:alert] = "Oops, but you can't edit a journal after 24 hours it was created"
     end
-  end
-
-  def new
-    @journal = current_user.journals.build
   end
 
   def create
@@ -42,7 +46,6 @@ class JournalsController < ApplicationController
   end
 
   def visible_journals
-    binding.pry
     unless current_user.supporter?
       redirect_to root_path
       flash[:alert] = "Unauthorized to view the page"
