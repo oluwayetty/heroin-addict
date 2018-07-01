@@ -1,0 +1,28 @@
+<%= render 'my_groups' %>
+
+<div class="container">
+  <div class="col-md-8 col-md-offset-1 custyle">
+    <table class="table table-striped custab">
+    <thead>
+      <tr>
+          <th>Chatroom Name</th>
+          <th class="text-center">Actions</th>
+      </tr>
+    </thead>
+      <% @chatrooms.each do |chatroom| %>
+        <tr>
+          <td><%= chatroom.name %></td>
+          <td class="text-center">
+            <%= link_to "Join", chatroom_chatroom_users_path(chatroom), method: :post %> |
+            <%= link_to "Leave", chatroom_chatroom_users_path(chatroom), method: :delete %> |
+            <% if is_user_creator?(current_user, chatroom) %>
+              <%= link_to 'Show', chatroom %> |
+              <%= link_to 'Edit', edit_chatroom_path(chatroom) %> |
+              <%= link_to 'Delete', chatroom, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

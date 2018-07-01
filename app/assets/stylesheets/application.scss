@@ -12,11 +12,19 @@
  *
  *= require_tree .
  *= require_self
+ *= require simple_calendar
  */
+
  @import "bootstrap-sprockets";
  @import "bootstrap";
+ @import "select2";
+ @import "select2-bootstrap";
 
  @import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900);
+
+ .navbar {
+   margin-bottom: 0px;
+ }
 [am-LatoSans] {
   font-family: 'Lato', sans-serif;
 }
@@ -96,10 +104,36 @@
   margin: 0 auto;
 }
 
+.alert-error {
+  width: 50%;
+  margin: 0 auto;
+}
+
 .radio-group {
   margin: 0 12%;
 }
 
 .alert > p {
   text-align: center;
+}
+
+.quote-box{
+  overflow: hidden;
+  border-radius: 15px;
+  background-color: #5bc0de;
+  margin: 2% auto;
+  color:white;
+  box-shadow: 2px 2px 2px 2px #E0E0E0;
+  height: 50%;
+  width: 50%;
+  float: right;
+}
+
+small.quote-text {
+  color: white;
+}
+
+.shared-journals {
+  float: right;
+  margin-right: 180px;
 }

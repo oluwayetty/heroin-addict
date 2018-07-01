@@ -1,4 +1,4 @@
 class DailyMood < ApplicationRecord
-  MOOD = ["Fine", "Not well", "Great", "Bad", "Depressed"].freeze
+  MOOD = ["Great", "Fine", "Not well", "Bad", "Depressed"].freeze
   belongs_to :user
 end

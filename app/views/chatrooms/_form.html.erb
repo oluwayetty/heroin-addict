@@ -1,0 +1,39 @@
+<div class="containter">
+  <div class="col-sm-4 col-sm-offset-4 text-center" id="channelform">
+    <%= form_for(chatroom) do |f| %>
+      <% if chatroom.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(chatroom.errors.count, "error") %> prohibited this chatroom from being saved:</h2>
+
+          <ul>
+          <% chatroom.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field">
+        <%= f.label :name %><br/>
+        <%= f.text_field :name, class:"form-group" %>
+      </div>
+
+      <div>
+        <%= f.label :Users_selection %><br/>
+        <%= f.collection_select(:user_ids, all_users_except_current_user, :id, :username, {}, {multiple: true, class: 'form-control col-md-7 col-xs-12', id: 'chatroom_users'}) %>
+      </div>
+      <br/>
+
+      <div class="actions">
+        <%= f.submit "Submit", class: "btn btn-success" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#chatroom_users").select2({
+    });
+  });
+</script>

@@ -1,0 +1,35 @@
+// Place all the styles related to the Chatrooms controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#channelform {
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.custyle {
+  padding-top: 4.5%;
+}
+
+.custab {
+  border: 1px solid #ccc;
+  padding: 5px;
+  margin: 5% 0;
+  box-shadow: 3px 3px 2px #ccc;
+  transition: 0.5s;
+}
+
+.custab:hover {
+  box-shadow: 3px 3px 0px transparent;
+  transition: 0.5s;
+}
+
+.nav-stacked {
+    border-bottom: 0;
+    height: 350px;
+    width: auto;
+    background: #F5F5F5;
+    overflow-y: scroll;
+    margin-bottom: 25px;
+}

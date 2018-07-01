@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+  	<div class="col-xs-12">
+      <%= link_to "Shared Journals", visible_journals_path, class: "btn btn-info btn-sm shared-journals" %>
+      <br/>
+      <%= month_calendar events: @days do |date,days| %>
+        <%= content_tag :div, class: "calendar-day", data: {date: date} do %>
+        <%= date.strftime('%e') %><br/>
+          <% days.each do |day| %>
+            <%= link_to '<i class="glyphicon glyphicon-eye-open"></i> View'.html_safe, journals_path(day: day.start_time), class: "btn btn-info btn-sm" %>
+          <% end %>
+          <% if date == DateTime.now.to_date %>
+            <%= link_to '<i class="glyphicon glyphicon-plus-sign"></i> New'.html_safe, new_journal_path, class: "btn btn-success btn-sm new-entry" %>
+          <% end %>
+        <% end %>
+      <% end %>
+  	</div>
+  </div>
+</div>
