@@ -5,14 +5,12 @@
       <br/>
       <%= month_calendar events: @days do |date,days| %>
         <%= content_tag :div, class: "calendar-day", data: {date: date} do %>
-        <%= date.strftime('%e') %>
+        <%= date.strftime('%e') %><br/>
           <% days.each do |day| %>
-            <div class="single_event">
-              <%= link_to "View Journal", journals_path(day: day.start_time) %>
-            </div>
+            <%= link_to '<i class="glyphicon glyphicon-eye-open"></i> View'.html_safe, journals_path(day: day.start_time), class: "btn btn-info btn-sm" %>
           <% end %>
           <% if date == DateTime.now.to_date %>
-            <%= link_to "New Entry", new_journal_path, class: "btn btn-success new-entry" %>
+            <%= link_to '<i class="glyphicon glyphicon-plus-sign"></i> New'.html_safe, new_journal_path, class: "btn btn-success btn-sm new-entry" %>
           <% end %>
         <% end %>
       <% end %>
