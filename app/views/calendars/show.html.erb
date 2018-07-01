@@ -9,7 +9,7 @@
           <% days.each do |day| %>
             <%= link_to '<i class="glyphicon glyphicon-eye-open"></i> View'.html_safe, journals_path(day: day.start_time), class: "btn btn-info btn-sm" %>
           <% end %>
-          <% if date == DateTime.now.to_date %>
+          <% if date == @current_day %>
             <%= link_to '<i class="glyphicon glyphicon-plus-sign"></i> New'.html_safe, new_journal_path, class: "btn btn-success btn-sm new-entry" %>
           <% end %>
         <% end %>
