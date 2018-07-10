@@ -6,9 +6,6 @@
 				<div class="card-block block-1">
 					<h3 class="card-title"><%= journal.subject.capitalize %></h3>
 					<p class="card-text">
-            SeeDocOnline makes seeing a doctor simple. Our interactive healthcare services allow
-            patients to speak to a doctor whenever and wherever they want. We have a team verified
-            doctors from around the globe, making it possible speaking in your native language.
             <%= journal.body %>
           </p>
           <%= link_to 'Edit', edit_journal_path(journal) if same_date?(journal) %>

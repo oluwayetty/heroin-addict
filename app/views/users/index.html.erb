@@ -1,0 +1,19 @@
+<div class="form-group users-list">
+  <ul class="list-group">
+    <p style="text-align: center;">Toggle admin users role</p>
+    <% all_users_except_current_user.each do |user| %>
+    <li class="list-group-item">
+      <%= user.username %>
+      <div class="material-switch pull-right">
+          <input id="toggle-admin-<%= user.id %>" data-user-id="<%= user.id %>"
+          type="checkbox" <%= user.admin ? 'checked' : '' %> />
+          <label for="toggle-admin-<%= user.id %>" class="label-success"></label>
+      </div>
+    </li>
+    <% end %>
+  </ul>
+</div>
+
+<script>
+  App.Users.init();
+</script>

@@ -15,4 +15,7 @@ Rails.application.routes.draw do
   end
 
   resources :direct_messages
+  get '/admin', to: 'admin#index'
+  resources :users, only: [:index, :update]
+
 end

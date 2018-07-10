@@ -13,13 +13,13 @@
         <tr>
           <td><%= chatroom.name %></td>
           <td class="text-center">
-            <%= link_to "Join", chatroom_chatroom_users_path(chatroom), method: :post %> |
-            <%= link_to "Leave", chatroom_chatroom_users_path(chatroom), method: :delete %> |
             <% if is_user_creator?(current_user, chatroom) %>
               <%= link_to 'Show', chatroom %> |
               <%= link_to 'Edit', edit_chatroom_path(chatroom) %> |
-              <%= link_to 'Delete', chatroom, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <%= link_to 'Delete', chatroom, method: :delete, data: { confirm: 'Are you sure?' } %> |
             <% end %>
+            <%= link_to "Join", chatroom_chatroom_users_path(chatroom), method: :post %> |
+            <%= link_to "Leave", chatroom_chatroom_users_path(chatroom), method: :delete %>
           </td>
         </tr>
       <% end %>

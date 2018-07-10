@@ -4,15 +4,15 @@
   <div id='content'>
     <div class='span2 sidebar'>
       <%= link_to "+ New Chatroom", new_chatroom_path, class: "btn btn-success new-chatroom" %><br/><br/>
-
-      <h5><%= current_user.chatrooms.public_channels.empty? ? '' : 'My chatrooms' %></h5>
-      <ul class="nav nav-tabs nav-stacked">
-        <% current_user.chatrooms.public_channels.each do |chatroom| %>
-          <li><%= link_to chatroom.name, chatroom, data: {behavior: "chatroom-link", chatroom_id: chatroom.id} %></li>
-        <% end %>
-      </ul>
-      <p></p>
-
+      <% unless current_user.chatrooms.public_channels.empty? %>
+        <h5>My chatrooms</h5>
+        <ul class="nav nav-tabs nav-stacked">
+          <% current_user.chatrooms.public_channels.each do |chatroom| %>
+            <li><%= link_to chatroom.name, chatroom, data: {behavior: "chatroom-link", chatroom_id: chatroom.id} %></li>
+          <% end %>
+        </ul>
+        <p></p>
+      <% end %>
       <h5>Users</h5>
       <ul class="nav nav-tabs nav-stacked">
         <% all_users_except_current_user.each do |user| %>

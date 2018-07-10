@@ -47,6 +47,11 @@
                 <li class="<%= 'active' if current_page?(chatrooms_path)%>">
                   <%= link_to('Chatrooms', chatrooms_path) %>
                 </li>
+                <% if current_user.admin? %>
+                  <li class="<%= 'active' if current_page?(admin_path)%>">
+                    <%= link_to('Admin', admin_path) %>
+                  </li>
+                <% end %>
               </ul>
               <ul class="nav navbar-nav navbar-right hidden-xs">
                 <li class="dropdown">
