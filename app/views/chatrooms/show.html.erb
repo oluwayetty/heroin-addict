@@ -1,9 +1,9 @@
 
 <%= render 'chatrooms/my_groups' %>
-  <div class='span8 sidebar'>
+  <div class='span8 sidebar scrollbar'>
     <h4> Chatroom name: <%= @chatroom.name %></h4><br/>
     <% unread_messages = false %>
-      <div data-behavior='messages' data-chatroom-id='<%= @chatroom.id %>'>
+      <div data-behavior='messages' data-chatroom-id='<%= @chatroom.id %>' class="chat-username">
         <% @messages.each do |message| %>
           <% if !unread_messages && @chatroom_user.last_read_at < message.created_at %>
             <% unread_messages = true %>

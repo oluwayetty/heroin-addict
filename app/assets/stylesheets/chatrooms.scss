@@ -25,11 +25,22 @@
   transition: 0.5s;
 }
 
-.nav-stacked {
+.autoscroll {
     border-bottom: 0;
     height: 350px;
     width: auto;
     background: #F5F5F5;
     overflow-y: scroll;
     margin-bottom: 25px;
+}
+
+.scrollbar {
+  border-bottom: 0;
+  height: 700px;
+  background: #F5F5F5;
+  overflow-y: scroll;
+}
+
+.chat-username {
+  margin-left: 10px;
 }

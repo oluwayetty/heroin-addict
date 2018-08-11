@@ -14,20 +14,20 @@ class LettersController < ApplicationController
 
   def create
     @new_letter = current_user.letters.build(letter_params)
-    if @new_letter.valid?
-      recipient_id = User.find_by(username: @new_letter.recipient).id
+    recipient = User.find_by(username: @new_letter.recipient.strip)
+    if @new_letter.valid? && recipient
       Letter.create!(
         subject: @new_letter.subject,
         sender: current_user.username,
         recipient: @new_letter.recipient,
-        recipient_id: recipient_id,
+        recipient_id: recipient.id,
         body: @new_letter.body,
         user: current_user
       )
       redirect_to letters_path
-      flash[:notice] = "Your letter has been created successfully and sent to"
+      flash[:notice] = "Your letter has been created successfully and sent to #{@new_letter.recipient}"
     else
-      flash[:alert] = "Oops, there was an error composing the letter"
+      flash[:alert] = "Oops, there was an error composing your letter. Re-check the username"
       redirect_to new_letter_path
     end
   end
