@@ -14,12 +14,23 @@
         <p></p>
       <% end %>
       <h5>Users</h5>
-      <ul class="nav nav-tabs nav-stacked">
+      <ul class="nav nav-tabs nav-stacked scrollbar">
+        <%= select_tag "user_ids", options_from_collection_for_select(all_users_except_current_user, "id", "username"), id: "chatroom_users" %>
         <% all_users_except_current_user.each do |user| %>
-          <li><%= link_to user.username, direct_message_path(user.id), data: {behavior: "chatroom-link", chatroom_id: Chatroom.direct_message_for_users([current_user, user]).id } %></li>
+          <li class="users">
+            <%= link_to user.username, direct_message_path(user.id), data: {behavior: "chatroom-link", chatroom_id: Chatroom.direct_message_for_users([current_user, user]).id } %>
+          </li>
         <% end %>
+
       </ul>
-
     </div>
-
   </div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#chatroom_users').select2({
+    }).on('select2:select', function(){
+      window.location = "/direct_messages/" + $(this).val();
+    });
+  });
+</script>

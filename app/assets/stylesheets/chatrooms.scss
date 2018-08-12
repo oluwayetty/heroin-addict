@@ -25,22 +25,30 @@
   transition: 0.5s;
 }
 
-.autoscroll {
-    border-bottom: 0;
-    height: 350px;
-    width: auto;
-    background: #F5F5F5;
-    overflow-y: scroll;
-    margin-bottom: 25px;
-}
-
 .scrollbar {
   border-bottom: 0;
-  height: 700px;
+  height: 500px;
+  background: #F5F5F5;
+  overflow-y: scroll;
+}
+
+.span2.sidebar {
+  width: auto;
+}
+
+ul.nav.nav-tabs.nav-stacked.scrollbar {
+  border-bottom: 0;
+  height: 300px;
   background: #F5F5F5;
   overflow-y: scroll;
 }
 
 .chat-username {
   margin-left: 10px;
+}
+
+
+li.users.unread > a {
+  color: red;
+  font-weight: bold;
 }
