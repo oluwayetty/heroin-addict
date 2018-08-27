@@ -32,6 +32,16 @@ class LettersController < ApplicationController
     end
   end
 
+  def destroy
+    @letter = Letter.find(params[:id].to_i)
+    if @letter.destroy
+      flash[:notice] = "Letter has been deleted successfully"
+    else
+      flash[:alert] = "An error occured"
+    end
+    redirect_to letters_path
+  end
+
   private
 
   def letter_params

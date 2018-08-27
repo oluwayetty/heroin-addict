@@ -3,6 +3,14 @@
   	<div class="login-html">
       <% if current_user.has_a_mood_record_for_today? %>
         <h4 class="text-center">Your submitted mood for today is <br/>"<%= current_user_last_mood %>"</h4>
+        <% if @low_status %>
+          <p> Please call or reach out to your loved ones</p>
+          <% current_user.supporters.each do |supporter| %>
+            <li class="">
+              <%= link_to supporter.username, direct_message_path(supporter.id), data: {behavior: "chatroom-link", chatroom_id: Chatroom.direct_message_for_users([current_user, supporter]).id } %>
+            </li>
+          <% end %>
+        <% end %>
       <% else %>
         <div class="form-group col-md-12 text-center">
             <p>Hello <%= current_user.username.capitalize %>,</p>

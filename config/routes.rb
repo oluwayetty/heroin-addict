@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/visible_journals', to: 'journals#visible_journals'
   resource :calendar
   resources :letters, only: [:index, :create,:show, :new]
+  post '/letters/:id', to: 'letters#destroy'
 
   resources :chatrooms do
     resource :chatroom_users
