@@ -52,3 +52,9 @@ li.users.unread > a {
   color: red;
   font-weight: bold;
 }
+
+a.new-chatroom:hover {
+    background-color: #51a351;
+    border-color: #51a351;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#51a351), to(#51a351));
+}

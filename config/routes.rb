@@ -18,5 +18,6 @@ Rails.application.routes.draw do
   resources :direct_messages
   get '/admin', to: 'admin#index'
   resources :users, only: [:index, :update]
+  get '/about', to: "home#about"
 
 end

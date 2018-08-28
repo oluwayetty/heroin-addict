@@ -35,20 +35,20 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse navbar-ex1-collapse">
               <ul class="nav navbar-nav js-nav-add-active-class">
-                <li class="<%= 'active' if current_page?(root_path)%>">
+                <li class="<%= 'active-path' if current_page?(root_path)%>">
                   <%= link_to('Home', root_path) %>
                 </li>
-                <li class="<%= 'active' if current_page?(calendar_path)%>">
+                <li class="<%= 'active-path' if current_page?(calendar_path)%>">
                   <%= link_to('Journal', calendar_path) %>
                 </li>
-                <li class="<%= 'active' if current_page?(letters_path)%>">
+                <li class="<%= 'active-path' if current_page?(letters_path)%>">
                   <%= link_to('Letters', letters_path) %>
                 </li>
-                <li class="<%= 'active' if current_page?(chatrooms_path)%>">
+                <li class="<%= 'active-path' if current_page?(chatrooms_path)%>">
                   <%= link_to('Chatrooms', chatrooms_path) %>
                 </li>
                 <% if current_user.admin? %>
-                  <li class="<%= 'active' if current_page?(admin_path)%>">
+                  <li class="<%= 'active-path' if current_page?(admin_path)%>">
                     <%= link_to('Admin', admin_path) %>
                   </li>
                 <% end %>

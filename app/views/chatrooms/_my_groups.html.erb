@@ -3,7 +3,7 @@
 <div class='container'>
   <div id='content'>
     <div class='span2 sidebar'>
-      <%= link_to "+ New Chatroom", new_chatroom_path, class: "btn btn-success new-chatroom" %><br/><br/>
+      <p><%= link_to "+ New Chatroom", new_chatroom_path, class: "btn btn-success new-chatroom" %><br/><br/></p>
       <% unless current_user.chatrooms.public_channels.empty? %>
         <h5>My chatrooms</h5>
         <ul class="nav nav-tabs nav-stacked">
