@@ -28,7 +28,7 @@ class LettersController < ApplicationController
       )
       redirect_to letters_path
       flash[:notice] = "Your letter has been created successfully and sent to #{@new_letter.recipient}"
-      publish(:letter_created, letter, letter_url(letter))
+      publish(:letter_created, letter, letter_path(letter))
     else
       flash[:alert] = "Oops, there was an error composing your letter. Re-check the username"
       redirect_to new_letter_path

@@ -15,5 +15,3 @@ ActionMailer::Base.smtp_settings = {
   :domain         => ENV['DOMAIN'],
   :enable_starttls_auto => true
 }
-
-Rails.application.routes.default_url_options[:host] = 'localhost'

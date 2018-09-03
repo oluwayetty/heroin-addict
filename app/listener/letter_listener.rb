@@ -1,8 +1,8 @@
 class LetterListener
   def letter_created(letter, url)
     sender = letter.sender.capitalize
-    phone_number = "+" + letter.user.phone_number
-    short_url = shorten_url(url)
+    phone_number = to_phone_number(letter.user.phone_number)
+    short_url = shorten_url(ENV['DOMAIN']+url)
     message = "You've got a new letter from #{sender}. Click #{short_url} to view it."
     send_message(phone_number, message)
   end
@@ -20,11 +20,11 @@ class LetterListener
     )
   end
 
+  def to_phone_number(phone_number)
+    phone_number[0] == '+' ? phone_number : "+" + phone_number
+  end
+
   def shorten_url(url)
-    if Rails.env.development?
-      url
-    else
-      Bitly.client.shorten(url)
-    end    
+    Bitly.client.shorten(url).short_url   
   end
 end
