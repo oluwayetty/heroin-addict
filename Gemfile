@@ -27,6 +27,8 @@ gem 'sendgrid-ruby'
 gem 'twilio-ruby'
 gem 'wisper'
 gem 'bitly'
+gem 'carrierwave'
+gem 'cloudinary'
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby

@@ -45,6 +45,9 @@
               <li class="<%= 'active-path' if current_page?(chatrooms_path)%>">
                 <%= link_to('Chatrooms', chatrooms_path) %>
               </li>
+              <li class="<%= 'active-path' if current_page?(chatrooms_path)%>">
+                <%= link_to('Status', statuses_path) %>
+              </li>
               <% if current_user.admin? %>
                 <li class="<%= 'active-path' if current_page?(admin_path)%>">
                   <%= link_to('Admin', admin_path) %>

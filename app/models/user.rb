@@ -24,6 +24,7 @@ class User < ApplicationRecord
   has_many :chatroom_users
   has_many :chatrooms, through: :chatroom_users
   has_many :messages
+  has_many :statuses
 
   def has_a_mood_record_for_today?
     current_date = DateTime.now.to_date
