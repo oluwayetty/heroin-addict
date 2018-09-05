@@ -1,4 +1,6 @@
 class LettersController < ApplicationController
+  include Wisper::Publisher
+
   before_action :verify_supporters, except: [:index,:show]
 
   def index
@@ -16,7 +18,7 @@ class LettersController < ApplicationController
     @new_letter = current_user.letters.build(letter_params)
     recipient = User.find_by(username: @new_letter.recipient.strip)
     if @new_letter.valid? && recipient
-      Letter.create!(
+      letter = Letter.create!(
         subject: @new_letter.subject,
         sender: current_user.username,
         recipient: @new_letter.recipient,
@@ -26,6 +28,7 @@ class LettersController < ApplicationController
       )
       redirect_to letters_path
       flash[:notice] = "Your letter has been created successfully and sent to #{@new_letter.recipient}"
+      publish(:letter_created, letter, letter_path(letter))
     else
       flash[:alert] = "Oops, there was an error composing your letter. Re-check the username"
       redirect_to new_letter_path

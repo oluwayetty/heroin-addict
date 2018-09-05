@@ -24,6 +24,9 @@ gem "select2-rails"
 gem "simple_calendar", "~> 2.0"
 gem 'devise'
 gem 'sendgrid-ruby'
+gem 'twilio-ruby'
+gem 'wisper'
+gem 'bitly'
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
@@ -63,4 +66,3 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'redis'
 gem 'dotenv-rails', groups: [:development, :test]
-gem "letter_opener", :group => :development
