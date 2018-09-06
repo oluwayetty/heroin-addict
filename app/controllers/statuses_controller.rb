@@ -1,10 +1,11 @@
 class StatusesController < ApplicationController
   before_action :set_status, only: [:show, :edit, :update, :destroy]
+  helper_method :sort_column, :sort_direction
 
   respond_to :html
 
   def index
-    @statuses = Status.all
+    @statuses = Status.order(sort_column + " " + sort_direction)
     respond_with(@statuses)
   end
 
@@ -43,5 +44,13 @@ class StatusesController < ApplicationController
 
     def status_params
       params.require(:status).permit(:body, :image, :video)
+    end
+
+    def sort_column
+      Status.column_names.include?(params[:sort]) ? params[:sort] : "body"
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
 end

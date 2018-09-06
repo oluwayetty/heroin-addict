@@ -2,13 +2,17 @@ class VideoUploader < CarrierWave::Uploader::Base
   include Cloudinary::CarrierWave
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
+  # storage :file
   # storage :fog
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+  end
+
+  def size_range
+    0..20.megabytes
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
@@ -27,10 +31,10 @@ class VideoUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  # version :standard do 
+  # version :standard do
   #   process resize_to_fill: [200,200, :north]
   # end
-  
+
   # version :thumb do
   #   process resize_to_fit: [50,50]
   # end

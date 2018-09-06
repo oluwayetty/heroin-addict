@@ -12,7 +12,9 @@
 
 <p>
   <strong>Video:</strong>
-  <%= video_tag @status.video_url, :size => "320x240", :controls => true %>
+  <% if @status.video_url %>
+    <td><%= video_tag @status.video_url, :size => "320x240", :controls => true %></td>
+  <% end %>
 </p>
 
 <p>

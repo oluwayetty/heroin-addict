@@ -2,13 +2,13 @@
 
 <h1>Statuses</h1>
 
-<table>
+<table class="pretty">
   <thead>
     <tr>
-      <th>Body</th>
-      <th>Image</th>
-      <th>Video</th>
-      <th>User</th>
+      <th><%= sortable "body" %></th>
+      <th><%= sortable "image" %></th>
+      <th><%= sortable "video" %></th>
+      <th><%= sortable "user" %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,7 +18,9 @@
       <tr>
         <td><%= status.body %></td>
         <td><%= image_tag status.image_url %></td>
-        <td><%= video_tag status.video_url, :size => "320x240", :controls => true %></td>
+        <% if status.video_url %>
+          <td><%= video_tag status.video_url, :size => "320x240", :controls => true %></td>
+        <% end %>
         <td><%= status.user.username %></td>
         <td><%= link_to 'Show', status %></td>
         <td><%= link_to 'Edit', edit_status_path(status) %></td>

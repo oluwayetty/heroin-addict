@@ -60,6 +60,10 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
+    client_side_validations (11.1.2)
+      jquery-rails (~> 4.3)
+      js_regex (~> 2.2)
+      rails (>= 5.0.0.1, <= 6.0)
     cloudinary (1.9.1)
       aws_cf_signer
       rest-client
@@ -111,6 +115,8 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     jwt (2.1.0)
+    js_regex (2.2.2)
+      regexp_parser (>= 0.5.0, <= 0.6.0)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -190,6 +196,7 @@ GEM
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     redis (4.0.1)
+    regexp_parser (0.5.0)
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
@@ -303,6 +310,7 @@ DEPENDENCIES
   bootstrap-sass
   byebug
   carrierwave
+  client_side_validations
   cloudinary
   coffee-rails (~> 4.2)
   devise
