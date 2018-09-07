@@ -17,10 +17,8 @@
     <% @statuses.each do |status| %>
       <tr>
         <td><%= status.body %></td>
-        <td><%= image_tag status.image_url %></td>
-        <% if status.video_url %>
-          <td><%= video_tag status.video_url, :size => "320x240", :controls => true %></td>
-        <% end %>
+        <td><%= image_tag status.image_url if status.image_url %></td>
+        <td><%= video_tag status.video_url if status.video_url :size => "320x240", :controls => true %></td>
         <td><%= status.user.username %></td>
         <td><%= link_to 'Show', status %></td>
         <td><%= link_to 'Edit', edit_status_path(status) %></td>
