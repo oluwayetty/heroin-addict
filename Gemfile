@@ -27,6 +27,9 @@ gem 'sendgrid-ruby'
 gem 'twilio-ruby'
 gem 'wisper'
 gem 'bitly'
+gem 'carrierwave'
+gem 'cloudinary'
+gem 'client_side_validations'
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby

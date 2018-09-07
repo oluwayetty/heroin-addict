@@ -24,9 +24,14 @@ class User < ApplicationRecord
   has_many :chatroom_users
   has_many :chatrooms, through: :chatroom_users
   has_many :messages
+  has_many :statuses
 
   def has_a_mood_record_for_today?
     current_date = DateTime.now.to_date
     daily_moods.where("date(created_at) = ?", current_date).present?
+  end
+
+  def self.options_for_select
+    order('LOWER(username)').map { |e| [e.username, e.id] }
   end
 end

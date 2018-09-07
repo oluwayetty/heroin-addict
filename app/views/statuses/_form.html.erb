@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <%= form_for(status,  validate: true) do |f| %>
+        <div class="form-group">
+          <%= f.label :body %>
+          <%= f.text_area :body, autofocus: true, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :image %>
+          <%= f.hidden_field :image_cache %>
+          <%= f.file_field :image, autofocus: true, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :video %>
+          <%= f.file_field :video, autofocus: true, class: "form-control" %>
+        </div>
+
+        <%= f.submit "Submit", class: "form-control btn-success" %>
+      <% end %>
+    </div>
+  </div>
+</div>

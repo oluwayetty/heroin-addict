@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180827114822) do
+ActiveRecord::Schema.define(version: 20180903224740) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,6 +81,16 @@ ActiveRecord::Schema.define(version: 20180827114822) do
     t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
   end
 
+  create_table "statuses", force: :cascade do |t|
+    t.text     "body"
+    t.string   "image"
+    t.string   "video"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_statuses_on_user_id", using: :btree
+  end
+
   create_table "supported_users", force: :cascade do |t|
     t.integer  "supporter_id"
     t.integer  "addict_id"
@@ -120,4 +130,5 @@ ActiveRecord::Schema.define(version: 20180827114822) do
   add_foreign_key "letters", "users"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
+  add_foreign_key "statuses", "users"
 end

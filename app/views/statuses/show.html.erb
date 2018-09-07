@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @status.body %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= image_tag @status.image_url %>
+</p>
+
+<p>
+  <strong>Video:</strong>
+  <% if @status.video_url %>
+    <td><%= video_tag @status.video_url, :size => "320x240", :controls => true %></td>
+  <% end %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @status.user.username %>
+</p>
+
+<%= link_to 'Edit', edit_status_path(@status) %> |
+<%= link_to 'Back', statuses_path %>
