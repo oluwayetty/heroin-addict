@@ -1,26 +1,27 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Body:</strong>
-  <%= @status.body %>
-</p>
-
-<p>
-  <strong>Image:</strong>
-  <%= image_tag @status.image_url %>
-</p>
-
-<p>
-  <strong>Video:</strong>
-  <% if @status.video_url %>
-    <td><%= video_tag @status.video_url, :size => "320x240", :controls => true %></td>
-  <% end %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @status.user.username %>
-</p>
-
-<%= link_to 'Edit', edit_status_path(@status) %> |
-<%= link_to 'Back', statuses_path %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 offset-md-2">
+      <div class="card border-dark">
+        <div class="card-body">
+          <div class="card-text">
+            <%= @status.body %>
+          </div>
+        </div>
+        <%= image_tag @status.image_url, class: "image card-img-bottom" %>
+        <% if @status.video_url %>
+          <%= video_tag @status.video_url, :size => "320x240", class: "video", :controls => true %>
+        <% end %>
+        <div class="card-body">
+          <p>
+            <strong>User:</strong>
+            <%= @status.user.username %>
+          </p>
+        </div>
+        <div class="card-footer">
+          <span><%= link_to 'Edit', edit_status_path(@status), class: "btn btn-secondry" %></span>
+          <%= link_to 'Back', statuses_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
