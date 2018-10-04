@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: heroin-addict_production
+  database: heroin_addict_production
   username: heroin-addict
   password: <%= ENV['HEROIN-ADDICT_DATABASE_PASSWORD'] %>
