@@ -82,4 +82,4 @@ production:
   <<: *default
   database: heroin_addict_production
   username: heroin_addict
-  password: <%= ENV['HEROIN-ADDICT_DATABASE_PASSWORD'] %>
+  password: <%= ENV['HEROIN_ADDICT_DATABASE_PASSWORD'] %>
