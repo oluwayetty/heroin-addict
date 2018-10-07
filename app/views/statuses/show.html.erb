@@ -7,7 +7,7 @@
             <%= @status.body %>
           </div>
         </div>
-        <%= image_tag @status.image_url, class: "image card-img-bottom" %>
+        <%= image_tag @status.image_url, class: "image card-img-bottom" if @status.image_url.present?%>
         <% if @status.video_url %>
           <%= video_tag @status.video_url, :size => "320x240", class: "video", :controls => true %>
         <% end %>
