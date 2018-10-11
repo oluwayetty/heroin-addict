@@ -21,4 +21,5 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :update]
   get '/about', to: "home#about"
 
+  mount ActionCable.server, at: '/cable'
 end
