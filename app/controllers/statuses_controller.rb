@@ -23,7 +23,7 @@ class StatusesController < ApplicationController
 
   def create
     @status = current_user.statuses.build(status_params)
-    binding.pry
+    require 'pry'; binding.pry
     @status.save
     respond_with(@status)
   end
