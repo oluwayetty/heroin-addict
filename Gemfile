@@ -47,7 +47,6 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'responders'
-gem "figaro"
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
@@ -67,6 +66,7 @@ group :development do
   gem 'capistrano-bundler', require: false
   gem 'capistrano3-puma',   require: false
   gem 'capistrano-rails-db', require: false
+  gem 'capistrano-figaro-yml', '~> 1.0.2'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
