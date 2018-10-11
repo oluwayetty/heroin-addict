@@ -220,7 +220,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
-    redis (4.0.1)
+    redis (3.3.5)
     regexp_parser (0.5.0)
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
@@ -352,7 +352,7 @@ DEPENDENCIES
   pry
   puma (~> 3.0)
   rails (~> 5.0.0)
-  redis
+  redis (~> 3.2)
   responders
   sass-rails (~> 5.0)
   select2-rails
@@ -368,4 +368,4 @@ DEPENDENCIES
   wisper
 
 BUNDLED WITH
-   1.16.4
+   1.16.6
